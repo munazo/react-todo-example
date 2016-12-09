@@ -1,10 +1,15 @@
 {
-  'extends': 'airbnb',
-  'rules': {
-    'react/jsx-filename-extension': [1, { 'extensions': ['.js', '.jsx'] }],
-    'func-names': 0
+  "extends": "airbnb",
+  "rules": {
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "func-names": 0,
+    "arrow-body-style": 0,
+    "prefer-const": 0,
+    "no-mutable-exports": 0,
+    "jsx-a11y/href-no-hash": 0,
+    "jsx-a11y/no-static-element-interactions": 0
   },
-  'globals': {
-    'document': true
+  "globals": {
+    "document": true
   }
 }
