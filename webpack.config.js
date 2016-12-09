@@ -1,13 +1,13 @@
-var path = require('path');
- 
-var config = {
+const path = require('path');
+
+const config = {
   context: path.join(__dirname, 'src/'),
   entry: [
-    './main.js',
+    './index.js',
   ],
   output: {
     path: path.join(__dirname, 'public/'),
-    filename: 'main.js',
+    filename: 'index.js',
   },
   module: {
     loaders: [
@@ -16,26 +16,26 @@ var config = {
         exclude: /node_modules/,
         loaders: ['babel'],
       },
-      { 
-        test: /\.css$/, 
-        loaders: ['style', 'css']
+      {
+        test: /\.css$/,
+        loaders: ['style', 'css'],
       },
       {
         test: /\.styl$/,
-        loaders: ['style', 'css', 'stylus']
+        loaders: ['style', 'css', 'stylus'],
       },
     ],
     preLoaders: [
       {
-        test: /\.styl$/, 
-        loaders: ['stylint']
+        test: /\.styl$/,
+        loaders: ['stylint'],
       },
       {
-        test: /\.js$/, 
+        test: /\.js$/,
         exclude: /node_modules/,
-        loaders: ['eslint']
-      }
-    ]
+        loaders: ['eslint'],
+      },
+    ],
   },
   resolveLoader: {
     root: [
@@ -49,10 +49,10 @@ var config = {
     ],
   },
   stylint: {
-    config: '.stylintrc'
+    config: '.stylintrc',
   },
   eslint: {
-    configFile: '.eslintrc'
-  }
+    configFile: '.eslintrc',
+  },
 };
 module.exports = config;
