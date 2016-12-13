@@ -17,6 +17,8 @@ function visibilityFilter(state = SHOW_ALL, action) {
   }
 }
 
+let nextTodoId = 0;
+
 function todos(state = [], action) {
   switch (action.type) {
     case ADD_TODO:
@@ -25,6 +27,7 @@ function todos(state = [], action) {
         {
           text: action.text,
           completed: false,
+          id: (nextTodoId += 1),
         },
       ];
 
