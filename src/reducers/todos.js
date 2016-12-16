@@ -6,25 +6,41 @@ import {
 
 let nextTodoId = 0;
 
+const todo = (state, action) => {
+  switch (action.type) {
+    case ADD_TODO:
+      return {
+        text: action.text,
+        completed: false,
+        id: (nextTodoId += 1),
+      };
+
+    case TOGGLE_TODO:
+      if (state.id !== action.index) {
+        return state;
+      }
+
+      return Object.assign({}, state, {
+        completed: !state.completed,
+      });
+
+    default:
+      return state;
+  }
+};
+
 const todos = (state = [], action) => {
   switch (action.type) {
     case ADD_TODO:
       return [
         ...state,
-        {
-          text: action.text,
-          completed: false,
-          id: (nextTodoId += 1),
-        },
+        todo(state, action),
       ];
 
     case TOGGLE_TODO:
-      return state.map((todo) => {
-        if (todo.id === action.index) {
-          return Object.assign({}, todo, { completed: !todo.completed });
-        }
-        return todo;
-      });
+      return state.map(t =>
+        todo(t, action),
+      );
 
     default:
       return state;
